@@ -37,6 +37,8 @@ body {
   font-size: 9vmin;
   color: #253031;
   font-family: ui-monospace;
+  background-color: #bcab79;
+  color: rgb(29, 27, 27);
 }
 .btn{
     /* border: 1px solid red; */
