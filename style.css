@@ -52,3 +52,6 @@ body {
   background-color: #bcab79;
   border-radius: 23px;
 }
+.hide{
+  display: none;
+}

@@ -1,7 +1,7 @@
 let allboxes = document.querySelectorAll(".box");
 let resetgamebtn = document.querySelector(".resetgamebtn");
 let newgamebtn = document.querySelector(".newgamebtn");
-let winnermsg = document.querySelector(".winnermsg");
+let msg_container = document.querySelector(".msg_container");
 let msg = document.querySelector("#msg");
 
 let player1 = true;
@@ -17,18 +17,16 @@ const winpattern = [
   [2, 4, 6],
 ];
 
-allboxes.forEach((box) => {
-  box.addEventListener("click", () => {
-    console.log("clicked!");
+allboxes.forEach((b) => {
+  b.addEventListener("click", () => {
     if (player1) {
-      box.innerText = "X";
+      b.innerText = "X";
       player1 = false;
     } else {
-      box.innerText = "0";
+      b.innerText = "0";
       player1 = true;
     }
-    box.disabled = true;
-    // checkwinner();
+    b.disabled = true;
   });
 });
 
@@ -48,5 +46,28 @@ const checkwinner = () => {
 
 const showwinner = (winner) => {
   msg.innerText = `Congratulation ${winner} is the Winner!`;
-  winnermsg.classList.remove("hide");
+  msg_container.classList.remove("hide");
+  disabledboxes();
 };
+
+const disabledboxes = () => {
+  for (const box of allboxes) {
+    box.disabled = true;
+  }
+};
+
+const resetgame = () => {
+  player1 = true;
+  msg_container.classList.add("hide");
+  enabled();
+};
+
+const enabled = () => {
+  for (const box of allboxes) {
+    box.disbled = false;
+    box.innerText = "";
+  }
+};
+
+newgamebtn.addEventListener("click", resetgame);
+resetgamebtn.addEventListener("click", resetgame);
